@@ -86,6 +86,7 @@ export const ArticleParamsForm = ({ currentState, onApply }: ArticleParamsFormPr
             title='Цвет шрифта'
             selected={formState.fontColor}
             options={fontColors}
+            showDisabledOptions={true}
             onChange={(selected) => setFormState({ ...formState, fontColor: selected })}
           />
           <Separator />
@@ -93,6 +94,7 @@ export const ArticleParamsForm = ({ currentState, onApply }: ArticleParamsFormPr
             title='Цвет фона'
             selected={formState.backgroundColor}
             options={backgroundColors}
+            showDisabledOptions={true}
             onChange={(selected) => setFormState({ ...formState, backgroundColor: selected })}
           />
           <Select

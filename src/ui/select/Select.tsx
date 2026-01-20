@@ -18,10 +18,19 @@ type SelectProps = {
   onChange?: (selected: OptionType) => void;
   onClose?: () => void;
   title?: string;
+  showDisabledOptions?: boolean;
 };
 
 export const Select = (props: SelectProps) => {
-  const { options, placeholder, selected, onChange, onClose, title } = props;
+  const {
+    options,
+    placeholder,
+    selected,
+    onChange,
+    onClose,
+    title,
+    showDisabledOptions = false,
+  } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const placeholderRef = useRef<HTMLDivElement>(null);
@@ -56,7 +65,11 @@ export const Select = (props: SelectProps) => {
           </Text>
         </>
       )}
-      <div className={styles.selectWrapper} ref={rootRef} data-is-active={isOpen} data-testid='selectWrapper'>
+      <div
+        className={styles.selectWrapper}
+        ref={rootRef}
+        data-is-active={isOpen}
+        data-testid='selectWrapper'>
         <img src={arrowDown} alt='иконка стрелочки' className={styles.arrow} />
         <div
           className={clsx(styles.placeholder, (styles as Record<string, string>)[optionClassName])}
@@ -73,9 +86,14 @@ export const Select = (props: SelectProps) => {
         {isOpen && (
           <ul className={styles.select} data-testid='selectDropdown'>
             {options
-              .filter((option) => selected?.value !== option.value)
+              .filter((option) => showDisabledOptions || selected?.value !== option.value)
               .map((option) => (
-                <Option key={option.value} option={option} onClick={() => handleOptionClick(option)} />
+                <Option
+                  key={option.value}
+                  option={option}
+                  isDisabled={showDisabledOptions && selected?.value === option.value}
+                  onClick={() => handleOptionClick(option)}
+                />
               ))}
           </ul>
         )}

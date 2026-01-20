@@ -17,11 +17,13 @@ const App = () => {
       className={clsx(styles.main)}
       style={
         {
-          '--font-family': defaultArticleState.fontFamilyOption.value,
-          '--font-size': defaultArticleState.fontSizeOption.value,
-          '--font-color': defaultArticleState.fontColor.value,
-          '--container-width': defaultArticleState.contentWidth.value,
-          '--bg-color': defaultArticleState.backgroundColor.value,
+          '--font-family': articleState.fontFamilyOption.value,
+          '--font-size': articleState.fontSizeOption.value,
+          '--font-color': articleState.fontColor.value,
+          '--container-width': articleState.contentWidth.value,
+          '--bg-color': articleState.backgroundColor.value,
+          '--image-width':
+            articleState.contentWidth.value === '948px' ? '100%' : 'clamp(100%, 100vw, 1600px)',
         } as CSSProperties
       }>
       <ArticleParamsForm currentState={articleState} onApply={setArticleState} />

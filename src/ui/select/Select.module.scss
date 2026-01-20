@@ -82,8 +82,8 @@
 
 @mixin option-color-before {
   content: '';
-  width: 35px;
-  height: 35px;
+  width: 24px;
+  height: 24px;
   margin-right: 10px;
 }
 
@@ -95,9 +95,9 @@
 @mixin option-color-after {
   content: '';
   position: absolute;
-  left: 26px;
-  width: 17px;
-  height: 17px;
+  left: 25px;
+  width: 8px;
+  height: 8px;
   border-radius: 100%;
 }
 
@@ -186,6 +186,22 @@
 .option-purple[data-selected='true']::after {
   @include option-color-after;
   background-color: #ffffff;
+}
+
+.option_disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.option_disabled::before {
+  background-image: url('../../images/Group%20192.svg');
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: auto;
+}
+
+.option_disabled:hover {
+  background-color: rgb(255 255 255 / 100%);
 }
 
 @mixin option-width-before {

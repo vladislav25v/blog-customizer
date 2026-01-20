@@ -1,4 +1,10 @@
-export const fontFamilyClasses = ['open-sans', 'ubuntu', 'cormorant-garamond', 'days-one', 'merriweather'] as const;
+export const fontFamilyClasses = [
+  'open-sans',
+  'ubuntu',
+  'cormorant-garamond',
+  'days-one',
+  'merriweather',
+] as const;
 
 export type FontFamiliesClasses = (typeof fontFamilyClasses)[number];
 

@@ -45,9 +45,9 @@ export const SelectStory: Story = {
   render: (args) => {
     return (
       <Text {...args}>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, nulla. Itaque laudantium quas repudiandae
-        delectus voluptates fuga veritatis. Necessitatibus omnis sequi repudiandae, porro est possimus ullam inventore
-        dolores rem molestiae.
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, nulla. Itaque laudantium
+        quas repudiandae delectus voluptates fuga veritatis. Necessitatibus omnis sequi repudiandae,
+        porro est possimus ullam inventore dolores rem molestiae.
       </Text>
     );
   },

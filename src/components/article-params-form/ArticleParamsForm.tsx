@@ -26,7 +26,7 @@ type ArticleParamsFormProps = {
 
 export const ArticleParamsForm = ({ currentState, onApply }: ArticleParamsFormProps) => {
   const [formState, setFormState] = useState<ArticleStateType>(currentState);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,18 +37,18 @@ export const ArticleParamsForm = ({ currentState, onApply }: ArticleParamsFormPr
     const handleClick = (event: MouseEvent) => {
       const { target } = event;
       if (target instanceof Node && !rootRef.current?.contains(target)) {
-        setIsOpen(false);
+        setIsMenuOpen(false);
       }
     };
 
-    if (isOpen) {
+    if (isMenuOpen) {
       window.addEventListener('mousedown', handleClick);
     }
 
     return () => {
       window.removeEventListener('mousedown', handleClick);
     };
-  }, [isOpen]);
+  }, [isMenuOpen]);
 
   const handleApply = (event: React.FormEvent) => {
     event.preventDefault();
@@ -63,8 +63,11 @@ export const ArticleParamsForm = ({ currentState, onApply }: ArticleParamsFormPr
 
   return (
     <div ref={rootRef}>
-      <ArrowButton isOpen={isOpen} onClick={() => setIsOpen((prevIsOpen) => !prevIsOpen)} />
-      <aside className={clsx(styles.container, { [styles.container_open]: isOpen })}>
+      <ArrowButton
+        isOpen={isMenuOpen}
+        onClick={() => setIsMenuOpen((prevIsMenuOpen) => !prevIsMenuOpen)}
+      />
+      <aside className={clsx(styles.container, { [styles.container_open]: isMenuOpen })}>
         <form className={styles.form} onSubmit={handleApply} onReset={handleReset}>
           <Text as='h2' size={31} weight={800} uppercase>
             Задайте параметры
